@@ -3,6 +3,8 @@ package user
 import (
 	"net/http"
 
+	"github.com/djhranicky/golang_backend_learning/types"
+	"github.com/djhranicky/golang_backend_learning/utils"
 	"github.com/gorilla/mux"
 )
 
@@ -15,7 +17,7 @@ func NewHandler() *Handler {
 
 func (h *Handler) RegisterRoutes(router *mux.Router) {
 	router.HandleFunc("/login", h.handleLogin).Methods("POST")
-	router.HandleFunc("/register", h.handleLogin).Methods("POST")
+	router.HandleFunc("/register", h.handleRegister).Methods("POST")
 }
 
 func (h *Handler) handleLogin(w http.ResponseWriter, r *http.Request) {
@@ -23,5 +25,12 @@ func (h *Handler) handleLogin(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) handleRegister(w http.ResponseWriter, r *http.Request) {
+	// get JSON payload
+	var payload types.RegisterUserPayload
+	if err := utils.ParseJSON(r, payload); err != nil {
+		utils.WriteError(w, http.StatusBadRequest, err)
+	}
+	// check if the user exists
 
+	// if no, create user
 }
