@@ -1,3 +1,6 @@
+// Following along with https://youtu.be/7VLmLOiQ3ck?si=pTFmzFAwYPZJb-JE&t=1126
+// Could do this one as well https://www.youtube.com/watch?v=h3fqD6IprIA
+
 package main
 
 import (
